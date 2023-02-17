@@ -35,7 +35,7 @@ public class VRUI {
                     ui.returnVideo();
                     break;
                 case 7:
-                    ui.customerController.getCustomerReport();
+                    ui.getCustomerReport();
                     break;
                 case 8:
                     ui.clearRentals();
@@ -48,6 +48,13 @@ public class VRUI {
             }
         }
         System.out.println("Bye");
+    }
+
+    private void getCustomerReport() {
+        System.out.println("Enter customer name: ");
+        String customerName = VRUI.scanner.next();
+
+        customerController.getCustomerReport(customerName);
     }
 
     private void returnVideo() {

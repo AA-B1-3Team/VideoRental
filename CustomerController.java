@@ -25,10 +25,7 @@ public class CustomerController {
         System.out.println("End of list");
     }
 
-    public void getCustomerReport() {
-        System.out.println("Enter customer name: ");
-        String customerName = VRUI.scanner.next();
-
+    public void getCustomerReport(String customerName) {
         Customer foundCustomer = findCustomer(customerName);
 
         if (foundCustomer == null) {
