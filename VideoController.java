@@ -2,26 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VideoController {
+
     List<Video> videos = new ArrayList<Video>();
 
     public VideoController() {
+
     }
 
-    public void returnVideo() {
-        System.out.println("Enter customer name: ");
-        String customerName = VRUI.scanner.next();
-
-        Customer foundCustomer = null;
-        for (Customer customer : VRUI.getCustomers()) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
+    public void returnVideo(Customer foundCustomer, String videoTitle) {
         if (foundCustomer == null) return;
-
-        System.out.println("Enter video title to return: ");
-        String videoTitle = VRUI.scanner.next();
 
         List<Rental> customerRentals = foundCustomer.getRentals();
         for (Rental rental : customerRentals) {
@@ -33,6 +22,17 @@ public class VideoController {
         }
     }
 
+    public Video findVideo(String videoTitle){
+        Video foundVideo = null;
+        for (Video video : videos) {
+            if (video.getTitle().equals(videoTitle) && video.isRented() == false) {
+                foundVideo = video;
+                break;
+            }
+        }
+        return foundVideo;
+    }
+
     public void listVideos() {
         System.out.println("List of videos");
 
@@ -42,31 +42,10 @@ public class VideoController {
         System.out.println("End of list");
     }
 
-    public void rentVideo() {
-        System.out.println("Enter customer name: ");
-        String customerName = VRUI.scanner.next();
-
-        Customer foundCustomer = null;
-        for (Customer customer : VRUI.getCustomers()) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
-
+    public void rentVideo(Customer foundCustomer, String videoTitle) {
         if (foundCustomer == null) return;
 
-        System.out.println("Enter video title to rent: ");
-        String videoTitle = VRUI.scanner.next();
-
-        Video foundVideo = null;
-        for (Video video : videos) {
-            if (video.getTitle().equals(videoTitle) && video.isRented() == false) {
-                foundVideo = video;
-                break;
-            }
-        }
-
+        Video foundVideo = findVideo(videoTitle);
         if (foundVideo == null) return;
 
         Rental rental = new Rental(foundVideo);
