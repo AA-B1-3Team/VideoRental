@@ -2,9 +2,9 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class VRUI {
-    private final static VideoController videoController = new VideoController(this);
     private static Scanner scanner = new Scanner(System.in);
     private final CustomerController customerController = new CustomerController();
+    private final VideoController videoController = new VideoController();
 
     public static void main(String[] args) {
         VRUI ui = new VRUI();
@@ -20,7 +20,7 @@ public class VRUI {
                     ui.customerController.listCustomers();
                     break;
                 case 2:
-                    videoController.listVideos();
+                    ui.videoController.listVideos();
                     break;
                 case 3:
                     ui.registerCustomer();
@@ -29,13 +29,12 @@ public class VRUI {
                     ui.register("video");
                     break;
                 case 5:
-                    videoController.rentVideo();
+                    ui.videoController.rentVideo();
                     break;
                 case 6:
-                    videoController.returnVideo();
+                    ui.videoController.returnVideo();
                     break;
                 case 7:
-
                     ui.customerController.getCustomerReport();
                     break;
                 case 8:

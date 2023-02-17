@@ -2,11 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VideoController {
-    private final VRUI VRUI;
     List<Video> videos = new ArrayList<Video>();
 
-    public VideoController(VRUI VRUI) {
-        this.VRUI = VRUI;
+    public VideoController() {
     }
 
     public void returnVideo() {
