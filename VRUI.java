@@ -25,7 +25,7 @@ public class VRUI {
                     videoController.listVideos();
                     break;
                 case 3:
-                    ui.register("customer");
+                    ui.registerCustomer();
                     break;
                 case 4:
                     ui.register("video");
@@ -100,6 +100,7 @@ public class VRUI {
 
     public void register(String object) {
         if (object.equals("customer")) {
+            // TODO: register 의 분리가 완료되면 지워야 합니다. Conflict 방지를 위해 일단 남겨뒀습니다.
             System.out.println("Enter customer name: ");
             String name = scanner.next();
             Customer customer = new Customer(name);
@@ -118,6 +119,12 @@ public class VRUI {
             Video video = new Video(title, videoType, priceCode, registeredDate);
             videoController.videos.add(video);
         }
+    }
+
+    public void registerCustomer() {
+        System.out.println("Enter customer name: ");
+        String name = VRUI.scanner.next();
+        customerController.register(name);
     }
 
     public int showCommand() {

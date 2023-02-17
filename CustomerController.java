@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerController {
-    List<Customer> customers = new ArrayList<Customer>();
+    private List<Customer> customers = new ArrayList<>();
 
     public List<Customer> getCustomers() {
         return customers;
@@ -42,5 +42,10 @@ public class CustomerController {
             String result = foundCustomer.getReport();
             System.out.println(result);
         }
+    }
+
+    public void register(String name) {
+        Customer customer = new Customer(name);
+        customers.add(customer);
     }
 }
