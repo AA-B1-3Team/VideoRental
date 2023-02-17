@@ -57,7 +57,7 @@ public class VideoController {
 
     public void register(String title, int videoType,int priceCode) {
         Date registeredDate = new Date();
-        Video video = new Video(title, videoType, priceCode, registeredDate);
+        Video video = new Video(title, VideoType.convertFrom(videoType), priceCode, registeredDate);
         videos.add(video);
     }
 }
