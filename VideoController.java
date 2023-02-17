@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VideoController {
@@ -55,4 +56,11 @@ public class VideoController {
         customerRentals.add(rental);
         foundCustomer.setRentals(customerRentals);
     }
+
+    public void register(String title, int videoType,int priceCode) {
+        Date registeredDate = new Date();
+        Video video = new Video(title, videoType, priceCode, registeredDate);
+        videos.add(video);
+    }
+
 }
