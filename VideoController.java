@@ -49,12 +49,10 @@ public class VideoController {
         Video foundVideo = findVideo(videoTitle);
         if (foundVideo == null) return;
 
-        Rental rental = new Rental(foundVideo);
         foundVideo.setRented(true);
 
-        List<Rental> customerRentals = foundCustomer.getRentals();
-        customerRentals.add(rental);
-        foundCustomer.setRentals(customerRentals);
+        Rental rental = new Rental(foundVideo);
+        foundCustomer.addRental(rental);
     }
 
     public void register(String title, int videoType,int priceCode) {
@@ -62,5 +60,4 @@ public class VideoController {
         Video video = new Video(title, videoType, priceCode, registeredDate);
         videos.add(video);
     }
-
 }
