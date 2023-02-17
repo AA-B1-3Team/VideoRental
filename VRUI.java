@@ -26,7 +26,7 @@ public class VRUI {
                     ui.registerCustomer();
                     break;
                 case 4:
-                    ui.register("video");
+                    ui.registerVideo();
                     break;
                 case 5:
                     ui.rentVideo();
@@ -96,33 +96,23 @@ public class VRUI {
         james.addRental(r2);
     }
 
-    public void register(String object) {
-        if (object.equals("customer")) {
-            // TODO: register 의 분리가 완료되면 지워야 합니다. Conflict 방지를 위해 일단 남겨뒀습니다.
-            System.out.println("Enter customer name: ");
-            String name = scanner.next();
-            Customer customer = new Customer(name);
-            customerController.getCustomers().add(customer);
-        } else {
-            System.out.println("Enter video title to register: ");
-            String title = scanner.next();
-
-            System.out.println("Enter video type( 1 for VHD, 2 for CD, 3 for DVD ):");
-            int videoType = scanner.nextInt();
-
-            System.out.println("Enter price code( 1 for Regular, 2 for New Release ):");
-            int priceCode = scanner.nextInt();
-
-            Date registeredDate = new Date();
-            Video video = new Video(title, videoType, priceCode, registeredDate);
-            videoController.videos.add(video);
-        }
-    }
-
     public void registerCustomer() {
         System.out.println("Enter customer name: ");
         String name = VRUI.scanner.next();
         customerController.register(name);
+    }
+
+    public void registerVideo() {
+        System.out.println("Enter video title to register: ");
+        String title = scanner.next();
+
+        System.out.println("Enter video type( 1 for VHD, 2 for CD, 3 for DVD ):");
+        int videoType = scanner.nextInt();
+
+        System.out.println("Enter price code( 1 for Regular, 2 for New Release ):");
+        int priceCode = scanner.nextInt();
+
+        videoController.register(title, videoType, priceCode);
     }
 
     public int showCommand() {
