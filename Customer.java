@@ -104,12 +104,16 @@ public class Customer {
     private int getDaysRented(Rental each) {
         long diff;
         int daysRented;
-        if (each.getStatus() == 1) { // returned Video
+        if (isReturned(each)) { // returned Video
             diff = each.getReturnDate().getTime() - each.getRentDate().getTime();
         } else { // not yet returned
             diff = new Date().getTime() - each.getRentDate().getTime();
         }
         daysRented = (int) (diff / MILLISECONDES_OF_A_DAY) + 1;
         return daysRented;
+    }
+
+    private boolean isReturned(Rental each) {
+        return each.getStatus() == 1;
     }
 }
