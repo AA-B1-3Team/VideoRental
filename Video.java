@@ -19,7 +19,7 @@ public class Video {
 		this.setTitle(title) ;
 		this.setVideoType(videoType) ;
 		this.setPriceCode(priceCode) ;
-		this.registeredDate = registeredDate ;
+		this.setRegisteredDate(registeredDate);
 	}
 
 	public int getLateReturnPointPenalty() {
@@ -35,7 +35,7 @@ public class Video {
 		return priceCode;
 	}
 
-	public void setPriceCode(int priceCode) {
+	private void setPriceCode(int priceCode) {
 		this.priceCode = priceCode;
 	}
 
@@ -43,7 +43,7 @@ public class Video {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	private void setTitle(String title) {
 		this.title = title;
 	}
 
@@ -59,7 +59,7 @@ public class Video {
 		return registeredDate;
 	}
 
-	public void setRegisteredDate(Date registeredDate) {
+	private void setRegisteredDate(Date registeredDate) {
 		this.registeredDate = registeredDate;
 	}
 
@@ -67,7 +67,7 @@ public class Video {
 		return videoType;
 	}
 
-	public void setVideoType(int videoType) {
+	private void setVideoType(int videoType) {
 		this.videoType = videoType;
 	}
 }
