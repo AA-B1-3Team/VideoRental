@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerController {
     private List<Customer> customers = new ArrayList<>();
@@ -28,13 +29,7 @@ public class CustomerController {
         System.out.println("Enter customer name: ");
         String customerName = VRUI.scanner.next();
 
-        Customer foundCustomer = null;
-        for (Customer customer : customers) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
+        Customer foundCustomer = findCustomer(customerName);
 
         if (foundCustomer == null) {
             System.out.println("No customer found");
@@ -50,13 +45,7 @@ public class CustomerController {
     }
 
     void clearRentals(String customerName) {
-        Customer foundCustomer = null;
-        for (Customer customer : getCustomers()) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
+        Customer foundCustomer = findCustomer(customerName);
 
         if (foundCustomer == null) {
             System.out.println("No customer found");
@@ -71,5 +60,14 @@ public class CustomerController {
             List<Rental> rentals = new ArrayList<Rental>();
             foundCustomer.setRentals(rentals);
         }
+    }
+
+    public Customer findCustomer(String customerName) {
+        for (Customer customer : customers) {
+            if (customer.getName().equals(customerName)) {
+                return customer;
+            }
+        }
+        return null;
     }
 }
