@@ -29,10 +29,10 @@ public class VRUI {
                     ui.register("video");
                     break;
                 case 5:
-                    ui.videoController.rentVideo();
+                    ui.rentVideo();
                     break;
                 case 6:
-                    ui.videoController.returnVideo();
+                    ui.returnVideo();
                     break;
                 case 7:
                     ui.customerController.getCustomerReport();
@@ -48,6 +48,28 @@ public class VRUI {
             }
         }
         System.out.println("Bye");
+    }
+
+    private void returnVideo() {
+        System.out.println("Enter customer name: ");
+        String customerName = VRUI.scanner.next();
+        Customer foundCustomer = customerController.findCustomer(customerName);
+
+        System.out.println("Enter video title to register: ");
+        String title = scanner.next();
+
+        videoController.returnVideo(foundCustomer, title);
+    }
+
+    private void rentVideo() {
+        System.out.println("Enter customer name: ");
+        String customerName = VRUI.scanner.next();
+        Customer foundCustomer = customerController.findCustomer(customerName);
+
+        System.out.println("Enter video title to register: ");
+        String title = scanner.next();
+
+        videoController.rentVideo(foundCustomer, title);
     }
 
     public void clearRentals() {
