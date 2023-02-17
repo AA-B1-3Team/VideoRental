@@ -48,4 +48,28 @@ public class CustomerController {
         Customer customer = new Customer(name);
         customers.add(customer);
     }
+
+    void clearRentals(String customerName) {
+        Customer foundCustomer = null;
+        for (Customer customer : getCustomers()) {
+            if (customer.getName().equals(customerName)) {
+                foundCustomer = customer;
+                break;
+            }
+        }
+
+        if (foundCustomer == null) {
+            System.out.println("No customer found");
+        } else {
+            System.out.println("Name: " + foundCustomer.getName() +
+                    "\tRentals: " + foundCustomer.getRentals().size());
+            for (Rental rental : foundCustomer.getRentals()) {
+                System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ");
+                System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode());
+            }
+
+            List<Rental> rentals = new ArrayList<Rental>();
+            foundCustomer.setRentals(rentals);
+        }
+    }
 }

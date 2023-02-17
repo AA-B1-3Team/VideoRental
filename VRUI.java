@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class VRUI {
@@ -55,29 +53,8 @@ public class VRUI {
 
     public void clearRentals() {
         System.out.println("Enter customer name: ");
-        String customerName = scanner.next();
-
-        Customer foundCustomer = null;
-        for (Customer customer : customerController.getCustomers()) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
-
-        if (foundCustomer == null) {
-            System.out.println("No customer found");
-        } else {
-            System.out.println("Name: " + foundCustomer.getName() +
-                    "\tRentals: " + foundCustomer.getRentals().size());
-            for (Rental rental : foundCustomer.getRentals()) {
-                System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ");
-                System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode());
-            }
-
-            List<Rental> rentals = new ArrayList<Rental>();
-            foundCustomer.setRentals(rentals);
-        }
+        String customerName = VRUI.scanner.next();
+        customerController.clearRentals(customerName);
     }
 
     private void init() {
